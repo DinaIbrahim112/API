@@ -8,11 +8,28 @@
 	"item": [
 		{
 			"name": "Create New Organization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var staticOrganizationID = pm.response.json().id;\r",
+							"pm.globals.set(\"OrganizationId\", staticOrganizationID);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{BaseUrl}}/1/organizations?displayName={displayName}&key={{APIKey}}&token={{APIToken}}",
+					"raw": "{{BaseUrl}}/1/organizations?displayName=Added Organization 1.1&key={{APIKey}}&token={{APIToken}}",
 					"host": [
 						"{{BaseUrl}}"
 					],
@@ -23,7 +40,7 @@
 					"query": [
 						{
 							"key": "displayName",
-							"value": "{displayName}"
+							"value": "Added Organization 1.1"
 						},
 						{
 							"key": "key",
@@ -55,6 +72,266 @@
 						"1",
 						"members",
 						"me"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{APIKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{APIToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Board Under Created Organization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var staticBoardID = pm.response.json().id;\r",
+							"pm.globals.set(\"BoardId\", staticBoardID);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/1/boards/?name=TRELLO New Board&idOrganization={{OrganizationId}}&key={{APIKey}}&token={{APIToken}}&",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "TRELLO New Board"
+						},
+						{
+							"key": "idOrganization",
+							"value": "{{OrganizationId}}"
+						},
+						{
+							"key": "key",
+							"value": "{{APIKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{APIToken}}"
+						},
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boards in an organization:",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/1/organizations/{{OrganizationId}}/boards?key={{APIKey}}&token={{APIToken}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"{{OrganizationId}}",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{APIKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{APIToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var staticListID = pm.response.json().id;\r",
+							"pm.globals.set(\"ListID\", staticListID);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/1/lists?name=New List Added&idBoard={{BoardId}}&key={{APIKey}}&token={{APIToken}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "New List Added"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{BoardId}}"
+						},
+						{
+							"key": "key",
+							"value": "{{APIKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{APIToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/1/boards/{{BoardId}}/lists?key={{APIKey}}&token={{APIToken}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{BoardId}}",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{APIKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{APIToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Archive List",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/1/lists/{{ListID}}/closed?key={{APIKey}}&token={{APIToken}}&value=true",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{ListID}}",
+						"closed"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{APIKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{APIToken}}"
+						},
+						{
+							"key": "value",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Board",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/1/boards/{{BoardId}}?key={{APIKey}}&token={{APIToken}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{BoardId}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{APIKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{APIToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Organization",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/1/organizations/{{OrganizationId}}?key={{APIKey}}&token={{APIToken}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"{{OrganizationId}}"
 					],
 					"query": [
 						{

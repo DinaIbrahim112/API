@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "6f275a38-9f00-4d80-84ec-1ba27f6d2425",
+		"name": "ConnectivityTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8581706"
+	},
+	"item": [
+		{
+			"name": "FirstRequestTovalidateConnectivity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate API_Key & Token are correct\" , function(){",
+							"pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "5f7971b9d3c1f1bbfbabfd4949c614a1",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "token",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{BaseUrl}}/1/members/me?boards=open&key={{APIKey}}&token={{APIToken}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"1",
+						"members",
+						"me"
+					],
+					"query": [
+						{
+							"key": "boards",
+							"value": "open"
+						},
+						{
+							"key": "key",
+							"value": "{{APIKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{APIToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

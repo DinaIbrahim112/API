@@ -1,0 +1,72 @@
+{
+	"id": "fb4b9a27-8280-4ba4-8ce1-98b3f88fa72a",
+	"values": [
+		{
+			"key": "APIKey",
+			"value": "9f45b89c7a8eef24798a06728a0ba4c3",
+			"enabled": true
+		},
+		{
+			"key": "APIToken",
+			"value": "ATTAa6d0d77e21d762a2ddcad64f7f74da1f9620a8bf0f28179444f6ae2535b9a06c28FFB5BF",
+			"enabled": true
+		},
+		{
+			"key": "BaseUrl",
+			"value": "https://api.trello.com",
+			"enabled": true
+		},
+		{
+			"key": "FirstBoardID",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "LastBoardID",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "FirstListID",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "LastListID",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "OrganizationId",
+			"value": "6385dd10f32ef6011f3e1113",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "BoardId",
+			"value": "6385dd114ba8f9021b47c657",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ListID",
+			"value": "63cbc9bbcdbbb5023dc800b1",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2023-01-21T11:41:55.994Z",
+	"_postman_exported_using": "Postman/10.8.3"
+}
